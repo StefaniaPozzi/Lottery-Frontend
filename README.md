@@ -1,1 +1,3 @@
-Using web3connect, wagmi
+# Lottery frontend
+
+Using React, Web3modal, Wagmi
