@@ -1,12 +1,13 @@
 import { Web3Button } from "@web3modal/react";
 import { useAccount } from "wagmi";
+import { useState } from "react";
 
 export default function Header() {
   const { address, connector, isConnected, isDisconnected } = useAccount();
-  let msgWalletStatus = "";
+  let msgWalletStatus = useState("Wallet disconnected");
 
-  if (isDisconnected) msgWalletStatus = <div>Wallet disconnect</div>;
-  if (isConnected) msgWalletStatus = <div> {address} Connected</div>;
+  if (isDisconnected) msgWalletStatus = "Wallet Disconnected";
+  if (isConnected) msgWalletStatus = "Wallet Connected";
 
   return (
     <>
