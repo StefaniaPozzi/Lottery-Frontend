@@ -1,21 +1,25 @@
 import { Web3Button } from "@web3modal/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 
 export default function Header() {
-  const { isConnected, isDisconnected, accounts } = useAccount();
-  let msgWalletStatus = "Wallet Disconnected";
+  const { isConnected, isDisconnected, address } = useAccount();
+  const [msgWalletStatus, setMsgWalletStatus] = useState("Wallet connected");
 
   useEffect(() => {
     if (isConnected) {
-      msgWalletStatus = "Wallet Disconnected";
+      setMsgWalletStatus("Wallet Connected");
       console.log("is connected");
     }
-    if (!isConnected) {
-      msgWalletStatus = "Wallet Connected";
+    if (isDisconnected) {
+      setMsgWalletStatus("Wallet Disconnected");
       console.log("is disconnected");
     }
   }, [isConnected]);
+
+  useEffect(() => {
+    if (address != null) console.log(`account changed to ${address}`);
+  }, [address]);
 
   return (
     <>
@@ -28,6 +32,7 @@ export default function Header() {
         />
         {msgWalletStatus}
       </p>
+      <h1>Decentralized Lottery</h1>
     </>
   );
 }

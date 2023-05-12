@@ -8,6 +8,7 @@ import { Web3Modal } from "@web3modal/react";
 import { configureChains, createConfig, WagmiConfig, sepolia } from "wagmi";
 import { createPublicClient, http } from "viem";
 import Header from "../components/Header";
+import Entrance from "../components/Entrance";
 
 const chains = [sepolia];
 const projectId = process.env.WALLET_CONNECT_PROJECT_ID;
@@ -31,6 +32,7 @@ export default function Content() {
     <>
       <WagmiConfig config={wagmiConfig}>
         <Header />
+        <Entrance />
       </WagmiConfig>
       <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
     </>
