@@ -9,11 +9,9 @@ export default function Header() {
   useEffect(() => {
     if (isConnected) {
       setMsgWalletStatus("Wallet Connected");
-      console.log("is connected");
     }
     if (isDisconnected) {
       setMsgWalletStatus("Wallet Disconnected");
-      console.log("is disconnected");
     }
   }, [isConnected]);
 
