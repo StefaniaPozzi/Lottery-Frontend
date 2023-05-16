@@ -9,16 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@coinbase/wallet-sdk": "^3.6.6",
-    "@web3modal/ethereum": "^2.3.7",
-    "@web3modal/react": "^2.3.7",
+    "@moralisweb3/next": "^2.20.0",
     "dotenv": "^16.0.3",
     "ethers": "^5",
-    "next": "13.4.1",
+    "moralis": "^2.20.0",
+    "next": "^13.4.2",
+    "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "viem": "^0.3.19",
-    "wagmi": "^1.0.1",
-    "web3modal": "^1.9.12"
+    "wagmi": "^1.0.5"
   }
 }

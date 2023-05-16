@@ -1,40 +1,29 @@
 "use client";
-import {
-  EthereumClient,
-  w3mProvider,
-  w3mConnectors,
-} from "@web3modal/ethereum";
-import { Web3Modal } from "@web3modal/react";
-import { configureChains, createConfig, WagmiConfig, sepolia } from "wagmi";
-import { createPublicClient, http } from "viem";
+import { configureChains, createConfig, WagmiConfig } from "wagmi";
+import { mainnet, polygon, optimism, arbitrum, sepolia } from "wagmi/chains";
+import { publicProvider } from "wagmi/providers/public";
+
 import Header from "../components/Header";
 import Entrance from "../components/Entrance";
+import MoralisNextApi from "../api/moralis/exportAPI.ts";
 
-const chains = [sepolia];
-const projectId = process.env.WALLET_CONNECT_PROJECT_ID;
+const chainList = [mainnet, sepolia];
 
-const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
+const { chains, provider } = configureChains(chainList, [publicProvider()]);
 
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  publicClient: createPublicClient({
-    chain: sepolia,
-    transport: http(),
-  }),
-  connectors: w3mConnectors({ projectId, version: 1, chains }),
-  provider,
-});
+// const { connectors } = getDefaultWallets({
+//   appName: "Lottery",
+//   projectId: ,
+//   chains,
+// });
 
-const ethereumClient = new EthereumClient(wagmiConfig, chains);
+// const wagmiConfig = createConfig({
+//   autoConnect: true,
+//   connectors,
+//   provider,
+// });
 
 export default function Content() {
-  return (
-    <>
-      <WagmiConfig config={wagmiConfig}>
-        <Header />
-        <Entrance />
-      </WagmiConfig>
-      <Web3Modal projectId={projectId} ethereumClient={ethereumClient} />
-    </>
-  );
+  console.log(MoralisNextApi);
+  return <>test</>;
 }

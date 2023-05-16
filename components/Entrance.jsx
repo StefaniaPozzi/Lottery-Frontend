@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { useContractRead, useNetwork, useAccount } from "wagmi";
-import { contractABI, contractAddress } from "../constants/index.js";
-import {ethers} from ethers;
+import {
+  contractABI,
+  contractAddress,
+  wagmigotchiABI,
+} from "../constants/index.js";
+import { ethers } from "ethers";
 
 export default function Entrance() {
   const { chain } = useNetwork();
@@ -13,7 +17,7 @@ export default function Entrance() {
 
   const [entranceFee, setEntranceFee] = useState(0);
 
-  const { data, isError, isLoading, isFetched } = useContractRead({
+  const { data, isError, isLoading, isFetched, status } = useContractRead({
     abi: contractABI,
     address: lotteryAddress,
     functionName: "getConstant",
@@ -26,7 +30,7 @@ export default function Entrance() {
     if (isConnected) {
       const updateUI = (async) => {
         setEntranceFee(data);
-        console.log(`update UI get ticket price ${data}`);
+        console.log(`update UI get constant price ${data}`);
       };
       updateUI();
     }
@@ -35,7 +39,7 @@ export default function Entrance() {
   return (
     <>
       <div>
-        <p>Entrance {entranceFee}value</p>
+        <p>Status {data}</p>
       </div>
     </>
   );
