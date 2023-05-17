@@ -7,5 +7,5 @@ import {
 import { Sepolia } from "@thirdweb-dev/chains";
 
 export default function Header() {
-  return "header";
+  return <ConnectWallet />;
 }
