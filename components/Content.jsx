@@ -1,29 +1,44 @@
 "use client";
-import { configureChains, createConfig, WagmiConfig } from "wagmi";
-import { mainnet, polygon, optimism, arbitrum, sepolia } from "wagmi/chains";
-import { publicProvider } from "wagmi/providers/public";
-
-import Header from "../components/Header";
-import Entrance from "../components/Entrance";
-import MoralisNextApi from "../api/moralis/exportAPI.ts";
-
-const chainList = [mainnet, sepolia];
-
-const { chains, provider } = configureChains(chainList, [publicProvider()]);
-
-// const { connectors } = getDefaultWallets({
-//   appName: "Lottery",
-//   projectId: ,
-//   chains,
-// });
-
-// const wagmiConfig = createConfig({
-//   autoConnect: true,
-//   connectors,
-//   provider,
-// });
+import {
+  ThirdwebProvider,
+  useAddress,
+  ConnectWallet,
+  useSigner,
+} from "@thirdweb-dev/react";
+import { Sepolia } from "@thirdweb-dev/chains";
+import { useState, useEffect } from "react";
+import Entrance from "./Entrance";
 
 export default function Content() {
-  console.log(MoralisNextApi);
-  return <>test</>;
+  const connectors = {
+    injected: {},
+  };
+  // if (!address) return <div>No wallet connected</div>;
+
+  // return <div>My wallet address is {address}</div>;
+  // //
+  // const [showSection, setShowSection] = useState(false);
+  // return (
+  //   <div>
+  //     <button onClick={handleButtonClick}>
+  //       {showSection ? "Hide Section" : "Show Section"}
+  //     </button>
+  //     {showSection && <Entrance />}
+  //   </div>
+  // );
+  // const address = useAddress();
+  // console.log(address);
+  // if (!address)
+  //   return (
+  //     <div>
+  //       This is an awesome designed Lottery!
+  //       <div>Please connect your wallet to enjoy all its features</div>
+  //     </div>
+  //   );
+
+  return (
+    <ThirdwebProvider activeChain={Sepolia} connectors={connectors}>
+      <Entrance />
+    </ThirdwebProvider>
+  );
 }
