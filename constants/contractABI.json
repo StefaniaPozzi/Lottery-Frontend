@@ -38,6 +38,12 @@
   {
     "type": "event",
     "anonymous": false,
+    "name": "EventLottery_RequestedBuyTicket",
+    "inputs": [{ "type": "uint256", "name": "amount", "indexed": true }]
+  },
+  {
+    "type": "event",
+    "anonymous": false,
     "name": "EventLottery__IsUpkeepTrue",
     "inputs": [{ "type": "bool", "name": "upkeep", "indexed": true }]
   },
