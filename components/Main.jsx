@@ -1,12 +1,7 @@
 "use client";
-import {
-  ThirdwebProvider,
-  useAddress,
-  ConnectWallet,
-  useSigner,
-} from "@thirdweb-dev/react";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 import { Sepolia } from "@thirdweb-dev/chains";
-import { useState, useEffect } from "react";
+import { NotificationProvider } from "web3uikit";
 import Content from "./Content";
 
 export default function Main() {
@@ -16,7 +11,9 @@ export default function Main() {
 
   return (
     <ThirdwebProvider activeChain={Sepolia} connectors={connectors}>
-      <Content />
+      <NotificationProvider>
+        <Content />
+      </NotificationProvider>
     </ThirdwebProvider>
   );
 }
