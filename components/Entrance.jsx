@@ -43,8 +43,8 @@ export default function MyComponent() {
   const handleNotification = () => {
     notificationDispatch({
       type: "info",
-      message: "Tx complete",
-      title: "Yess!",
+      message: "Transaction completed",
+      title: "Success",
       position: "topR",
       icon: "bell",
     });
