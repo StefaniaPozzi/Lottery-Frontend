@@ -1,11 +1,11 @@
 "use client";
-import {
-  ThirdwebProvider,
-  ConnectWallet,
-  useAddress,
-} from "@thirdweb-dev/react";
+import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
 import { Sepolia } from "@thirdweb-dev/chains";
 
 export default function Header() {
-  return <ConnectWallet />;
+  return (
+    <div class="border border-indigo-600">
+      <ConnectWallet />
+    </div>
+  );
 }

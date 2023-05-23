@@ -4,6 +4,7 @@ import {
   useChainId,
   useContractRead,
   useContractWrite,
+  useContractEvents,
   Web3Button,
 } from "@thirdweb-dev/react";
 import { useEffect, useState } from "react";
@@ -16,6 +17,8 @@ export default function MyComponent() {
   const address = useAddress();
   const chainId = useChainId();
   const [ticketPrice, setTicketPrice] = useState(0);
+  const [numPlayers, setNumPlayers] = useState(0);
+  const [recentWinner, setRecentWinner] = useState(0);
 
   const currentContractAddress = chainId ? contractAddress[chainId][0] : null;
   const { contract } = useContract(currentContractAddress, contractABI);
@@ -30,8 +33,18 @@ export default function MyComponent() {
     contract,
     "buyTicket"
   );
+
+  const { data: EventLottery__TicketBuyed } = useContractEvents(
+    contract,
+    "EventLottery__TicketBuyed"
+  );
+
   const notificationDispatch = useNotification();
   const resultTicketPrice = getTicketPrice ? getTicketPrice.toString() : null;
+  const resultNumPlayers = getNumPlayers ? getNumPlayers.toString() : null;
+  const resultRecentWinner = getRecentWinner
+    ? getRecentWinner.toString()
+    : null;
   const amount = ethers.utils.parseEther("0.001");
 
   useEffect(() => {
@@ -39,6 +52,13 @@ export default function MyComponent() {
       setTicketPrice(resultTicketPrice);
     }
   }, [resultTicketPrice]);
+
+  useEffect(() => {
+    if (chainId && address) {
+      setNumPlayers(resultNumPlayers);
+      setRecentWinner(resultRecentWinner);
+    }
+  }, [resultNumPlayers]);
 
   const handleNotification = () => {
     notificationDispatch({
@@ -64,23 +84,25 @@ export default function MyComponent() {
               txReceipt.then((val) => {
                 if (val["receipt"]["status"] == "0x1") {
                   handleNotification();
-                  console.log("success");
                 }
+                console.log(
+                  `Event: ${EventLottery__TicketBuyed[0]["eventName"]}`
+                );
               });
             }}
             onError={(error) => console.log(error)}
             isDisabled={isLoading}
           >
-            <div>Loading..</div>
+            {/* <div>Loading..</div> */}
             <div>Buy your lottery ticket here!</div>
           </Web3Button>
-          <p>
-            Ticket price:
+          <div>
+            Ticket price:{" "}
             {ticketPrice ? ethers.utils.formatUnits(ticketPrice, "ether") : ""}
             ETH
-            {/* <div>Players: {getNumPlayers ? getNumPlayers : ""}..</div>
-            <div>Recent winner: {getRecentWinner ? getRecentWinner : ""}</div> */}
-          </p>
+            <div>Players: {numPlayers ? numPlayers : ""}</div>
+            <div>Recent winner: {recentWinner ? recentWinner : ""}</div>
+          </div>
         </div>
       ) : (
         <div>Connect a wallet to enjoy my amazing features</div>
