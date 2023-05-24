@@ -4,7 +4,7 @@ import { Sepolia } from "@thirdweb-dev/chains";
 
 export default function Header() {
   return (
-    <div class="border border-indigo-600">
+    <div>
       <ConnectWallet />
     </div>
   );

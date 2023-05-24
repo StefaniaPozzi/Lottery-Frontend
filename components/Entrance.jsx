@@ -96,7 +96,7 @@ export default function MyComponent() {
             {/* <div>Loading..</div> */}
             <div>Buy your lottery ticket here!</div>
           </Web3Button>
-          <div>
+          <div className="text-green-600">
             Ticket price:{" "}
             {ticketPrice ? ethers.utils.formatUnits(ticketPrice, "ether") : ""}
             ETH
