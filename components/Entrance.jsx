@@ -75,6 +75,7 @@ export default function MyComponent() {
       {address && contract ? (
         <div>
           <Web3Button
+            className=" bg-amber-500 hover:bg-amber-700"
             contractAddress={currentContractAddress}
             action={() => {
               txReceipt = mutateAsync({
@@ -94,9 +95,19 @@ export default function MyComponent() {
             isDisabled={isLoading}
           >
             {/* <div>Loading..</div> */}
-            <div>Buy your lottery ticket here!</div>
+            {isLoading ? (
+              <div>
+                <svg
+                  class="animate-spin h-5 w-5 mr-3 ..."
+                  viewBox="0 0 24 24"
+                ></svg>
+                Processing...
+              </div>
+            ) : (
+              <div>Buy ticket</div>
+            )}
           </Web3Button>
-          <div className="text-green-600">
+          <div className="text-amber-600">
             Ticket price:{" "}
             {ticketPrice ? ethers.utils.formatUnits(ticketPrice, "ether") : ""}
             ETH
