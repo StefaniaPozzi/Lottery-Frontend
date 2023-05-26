@@ -1,11 +1,17 @@
 "use client";
 import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
-import { Sepolia } from "@thirdweb-dev/chains";
 
 export default function Header() {
   return (
-    <div className="border-y-4 border-amber-600">
-      <ConnectWallet />
+    <div className="border-b-2  border-amber-600">
+      <div className="grid grid-cols-4 gap-4">
+        <div className="text-2xl"> Decentralized Lottery</div>
+        <div></div>
+        <div></div>
+        <div>
+          <ConnectWallet />
+        </div>
+      </div>
     </div>
   );
 }

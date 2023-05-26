@@ -75,34 +75,32 @@ export default function MyComponent() {
       {address && contract ? (
         <div>
           <Web3Button
-            className=" bg-amber-500 hover:bg-amber-700"
+            className=" hover:bg-amber-500"
             contractAddress={currentContractAddress}
             action={() => {
-              txReceipt = mutateAsync({
-                args: [],
-                overrides: { value: amount },
-              });
-              txReceipt.then((val) => {
-                if (val["receipt"]["status"] == "0x1") {
-                  handleNotification();
-                }
-                console.log(
-                  `Event: ${EventLottery__TicketBuyed[0]["eventName"]}`
-                );
-              });
+              try {
+                txReceipt = mutateAsync({
+                  args: [],
+                  overrides: { value: amount },
+                });
+                txReceipt.then((val) => {
+                  if (val["receipt"]["status"] == "0x1") {
+                    handleNotification();
+                  }
+                  console.log(
+                    `Event: ${EventLottery__TicketBuyed[0]["eventName"]}`
+                  );
+                });
+              } catch (error) {
+                console.log("User rejected provider access");
+              }
             }}
             onError={(error) => console.log(error)}
             isDisabled={isLoading}
           >
             {/* <div>Loading..</div> */}
             {isLoading ? (
-              <div>
-                <svg
-                  class="animate-spin h-5 w-5 mr-3 ..."
-                  viewBox="0 0 24 24"
-                ></svg>
-                Processing...
-              </div>
+              <div className="animate-spin">Processing...</div>
             ) : (
               <div>Buy ticket</div>
             )}
