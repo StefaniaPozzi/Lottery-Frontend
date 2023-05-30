@@ -60,16 +60,23 @@ export default function MyComponent() {
     }
   }, [resultNumPlayers]);
 
-  const handleNotification = () => {
+  const handleBuyTicketSuccess = () => {
     notificationDispatch({
       type: "info",
       message: "Transaction completed",
       title: "Success",
       position: "topR",
-      icon: "bell",
     });
   };
 
+  const handleRejectedTx = () => {
+    notificationDispatch({
+      type: "info",
+      message: "Transaction rejected",
+      title: "Failed",
+      position: "topR",
+    });
+  };
   return (
     <div>
       {address && contract ? (
@@ -77,28 +84,28 @@ export default function MyComponent() {
           <Web3Button
             className=" hover:bg-amber-500"
             contractAddress={currentContractAddress}
-            action={() => {
-              try {
-                txReceipt = mutateAsync({
-                  args: [],
-                  overrides: { value: amount },
-                });
-                txReceipt.then((val) => {
+            action={async () => {
+              txReceipt = await mutateAsync({
+                args: [],
+                overrides: { value: amount },
+              }).catch((e) => {
+                console.log("mutate error");
+              });
+
+              txReceipt
+                .then((val) => {
                   if (val["receipt"]["status"] == "0x1") {
-                    handleNotification();
+                    handleBuyTicketSuccess();
                   }
                   console.log(
                     `Event: ${EventLottery__TicketBuyed[0]["eventName"]}`
                   );
-                });
-              } catch (error) {
-                console.log("User rejected provider access");
-              }
+                })
+                .catch((err) => handleRejectedTx());
             }}
             onError={(error) => console.log(error)}
             isDisabled={isLoading}
           >
-            {/* <div>Loading..</div> */}
             {isLoading ? (
               <div className="animate-spin">Processing...</div>
             ) : (
