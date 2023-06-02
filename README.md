@@ -46,7 +46,7 @@
   </ol>
 </details>
 
-## About the dapp
+## 1. About the dapp
 
 This todo list will help you to have consistency in your habits.
 
@@ -79,7 +79,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Getting Started
+## 2. Getting Started
+
+You can find this application at ...
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
@@ -113,7 +115,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Usage
+## 3. Usage
 
 ..Todo.. Add functionality screenshot /video
 
@@ -121,7 +123,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Roadmap
+## 4. Roadmap
 
 - [x] MVP
 - [ ] Make the parameters [x,y,z] customisable
@@ -135,7 +137,7 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Contributing
+## 5. Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -150,13 +152,13 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## License
+## 6. License
 
 Distributed under the MIT License.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Contact
+## 7. Contact
 
 Stefania Pozzi - concinimus@gmail.com
 
@@ -164,7 +166,7 @@ Project Link - ..todo..
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## References
+## 8. References
 
 - Best readme template [https://github.com/othneildrew/Best-README-Template]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
