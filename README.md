@@ -24,9 +24,10 @@
   <summary>Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">About the dapp</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+      <li><a href="#built-with">Ethical issues</a></li>
+        <li><a href="#built-with">Built with</a></li>
       </ul>
     </li>
     <li>
@@ -41,18 +42,18 @@
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
+    <li><a href="#acknowledgments">References</a></li>
   </ol>
 </details>
 
-# HABIT MAKER dapp
+## About the dapp
 
 This todo list will help you to have consistency in your habits.
 
 There are just 2 rules:
 
-1. If you maintain 80% (x) or more habits in the period of 30 days (y), the Habit Maker will give you some ETH (z)
-2. If you maintain less than 80% habits in the period of 30 days, the Habit Maker will take you some ETH
+1. If you maintain **80% (x)** or more habits in the period of **30 days (y)**, the Habit Maker will give you some **ETH (z)**
+2. If you maintain less than 80% habits (x) in the period of 30 days (y), the Habit Maker will take you some ETH (z)
 
 All the parameters (x,y,z) are customizable.
 
@@ -64,14 +65,10 @@ For this prototipe version, we assume that the user who is using the app, is fil
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Platforms
+### Built With
 
 The backend of this dapp (contract HabitMaker) is deployed on the testnet Sepolia at the address ..fill in..
 The frontend of this dapp is deployed on fleek at the address ..fill in..
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-### Built With
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
@@ -152,22 +149,24 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## License
 
 Distributed under the MIT License.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Contact
 
 Stefania Pozzi - concinimus@gmail.com
 
 Project Link - ..todo..
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## References
 
 - Best readme template [https://github.com/othneildrew/Best-README-Template]
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
